@@ -23,3 +23,20 @@ var intersect = function(nums1, nums2) {
     }
     return res
 };
+-------------------------------------------------------
+var intersect = function(nums1, nums2) {
+ //借助哈希表
+    let hashmap=new Map()
+    let res=[]
+    for(let num1 of nums1){
+        hashmap.has(num1)?hashmap.set(num1,hashmap.get(num1)+1):hashmap.set(num1,1)
+    }
+    for(let num2 of nums2){
+        let hashkey=hashmap.get(num2)
+        if(hashmap.has(num2)){
+            res.push(num2)
+        }
+            hashmap.get(num2)>1?hashmap.set(num2,hashkey-1):hashmap.delete(num2)
+    }
+    return res
+};
