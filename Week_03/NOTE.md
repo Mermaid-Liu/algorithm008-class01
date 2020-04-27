@@ -3,7 +3,7 @@
 ## 本周任务(每日一题)
 - [x] 1-Two Sum
 - [x] 15-3sum
-- [ ] get-kth-magic-number-lcci
+- [ ] 面试题 17.09. 第 k 个数
 ## 视频练习
 - [x] 1-Two Sum
 - [x] 15-3sum
