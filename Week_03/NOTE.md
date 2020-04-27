@@ -5,7 +5,7 @@
 - [ ] get-kth-magic-number-lcci
 ##  4.27周一
 ### Two Sum
-标签：
+标签：哈希表（字典）
 > 之前的实现都是用的javascript，这次用的python，学了python的enumerate()方法，这个方法可以直接达到hashmap的效果；两个数的和是target，因此先便利一遍，把整个数组的值都放到一个字典里，之后再便利一遍，如果target减去每一项，差也在这个dictionary里的话，就可以输出出来了。
 ### Code block
 ``` python
@@ -18,4 +18,44 @@ class Solution:
             j=hashmap.get(target-num)
             if j is not None and i!=j:
                 return [i,j]
+```
+### 3Sum
+标签：排序➕双指针
+> 现将原数组排序好，然后利用双指针，将当前值与当前值加一和末尾值做和
+corner case：当数组为空或者数组的长度小于3的时候，返回[]
+initialize：left=i+1 right=len(nums)-1
+三种情况：1）当sum<0时：left++
+2)当sum>0时，right--
+3)当sum=0时，append到数组里
+当right和left重合或者left>right时，i++
+### CodeBlock
+```
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        n=len(nums)
+        if not nums or n<3:
+            return []
+        res=[]
+        nums.sort()
+        for i in range(n):
+            if nums[i]>0:
+                return res
+            if i>0 and nums[i]==nums[i-1]:
+                continue
+            L=i+1
+            R=n-1
+            while(L<R):
+                if(nums[i]+nums[L]+nums[R]==0):
+                    res.append([nums[i],nums[L],nums[R]])
+                    while(L<R and nums[L]==nums[L+1]):
+                        L=L+1
+                    while(L<R and nums[R]==nums[R-1]):
+                        R=R-1
+                    L=L+1
+                    R=R-1
+                elif(nums[i]+nums[L]+nums[R]<0):
+                    L=L+1
+                else:
+                    R=R-1
+        return res
 ```
