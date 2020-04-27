@@ -1,7 +1,16 @@
+# 知识点总结：
 # 每日练习
-## 本周任务
-- [x] Two Sum
-- [x] 3sum
+## 本周任务(每日一题)
+- [x] 1-Two Sum
+- [x] 15-3sum
+- [ ] get-kth-magic-number-lcci
+## 视频练习
+- [x] 1-Two Sum
+- [x] 15-3sum
+- [ ] get-kth-magic-number-lcci
+## 本周作业
+- [x] 1-Two Sum
+- [x] 15-3sum
 - [ ] get-kth-magic-number-lcci
 ##  4.27周一
 ### Two Sum
