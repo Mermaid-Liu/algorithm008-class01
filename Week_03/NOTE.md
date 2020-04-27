@@ -1,7 +1,7 @@
 # 每日练习
 ## 本周任务
 - [x] Two Sum
-- [ ] 3sum
+- [x] 3sum
 - [ ] get-kth-magic-number-lcci
 ##  4.27周一
 ### Two Sum
