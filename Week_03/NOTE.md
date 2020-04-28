@@ -28,7 +28,7 @@ class Solution:
 - [x] 15-3sum
 - [ ] 面试题 17.09. 第 k 个数
 ## 实战练习
-- [ ] 70
+- [x] 70
 - [ ] 22
 - [ ] 226
 - [ ] 98
@@ -95,3 +95,18 @@ class Solution:
                     R=R-1
         return res
 ```
+##  4.28周二
+### 实战项目-爬楼梯
+>   先找到重复子问题，用数学归纳法总结出来递推公式，再借助动态规划的思想完成这道题目
+```
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n<=2:
+            return n
+        f1,f2,f3=1,2,3
+        for i in range(3,n+1):
+            f3=f1+f2
+            f1=f2
+            f2=f3
+        return f3
+       ```
