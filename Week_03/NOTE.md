@@ -1,4 +1,27 @@
 # 知识点总结：
+##  Recursion[递归]
+    定义：通过函数来进行的循环
+    * 向下进入到不同的层，又向上回到之前的那一层
+    *参数在函数不同层之间传递变量
+### 代码模版
+``` python
+class Solution:
+    def recursion(level,param1,param2...):
+        #递归终止条件
+        if level>MAX_LEVEL:
+        process_result
+        return
+        #处理当前层逻辑
+        process(level,data...)
+        #下探到下一层
+        self.recursion(level+1,p1,p2...)
+        #清理当前层
+```
+##  三个思维要点：
+1.不要人肉进行递归
+2.找到最近最简的方法，将其拆解成可重复解决的问题（重复子问题）
+3.数学归纳思维
+
 # 每日练习
 ## 本周任务(每日一题)
 - [x] 1-Two Sum
