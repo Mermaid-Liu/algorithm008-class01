@@ -27,6 +27,7 @@ class Solution:
 - [x] 1-Two Sum
 - [x] 15-3sum
 - [ ] 面试题 17.09. 第 k 个数
+- [x] 415-字符串相加
 ## 实战练习
 - [x] 70
 - [ ] 22
@@ -96,6 +97,23 @@ class Solution:
         return res
 ```
 ##  4.28周二
+### 每日一题-字符串相加
+>   双指针模拟人类计算加法的行为，将i，j指针从两个字符串的最后一位遍历起来，temp用来记录每一位的和以及上一次的进位；Carry用来记录进位（不是1就是0）res是最后的结果，把每一次的temp的个位都拼起来。
+```
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        res=""
+        i,j,carry=len(num1)-1,len(num2)-1,0
+        while i>=0 or j>=0:
+            n1=int(num1[i]) if i>=0 else 0
+            n2=int(num2[j]) if j>=0 else 0
+            temp=n1+n2+carry
+            carry=temp//10
+            res=str(temp%10)+res
+            i=i-1
+            j=j-1
+        return "1"+res if carry else res
+```
 ### 实战项目-爬楼梯
 >   先找到重复子问题，用数学归纳法总结出来递推公式，再借助动态规划的思想完成这道题目
 ```
