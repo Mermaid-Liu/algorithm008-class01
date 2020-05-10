@@ -1,6 +1,6 @@
 # 第四周学习笔记
 ##  102.二叉树的层序遍历
-> 题目描述：层序遍历就是逐层地，从左到右访问所有结点，也就是BFS的走法。因此使用BFS的解题思路。
+> 解法1:BFS（广度优先搜索方法，逐层迭代）
 ```
 # Definition for a binary tree node.
 # class TreeNode:
@@ -11,23 +11,39 @@
 
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
-        levels=[]
-        #terminator
         if not root:
-            return levels
+            return []
+        result=[]
+        queue=[root]
+        while queue:
+                node=[]
+                child=[]
+                for item in queue:
+                    child.append(item.val)
+                    if item.left:
+                        node.append(item.left)
+                    if item.right:
+                        node.append(item.right)
+                result.append(child)
+                queue=node
+        return result
+```
+> 解法2:DFS（深度优先搜索方法，用一个level来记录当前进行到了哪一层）
+```
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        result=[]
+        if not root:
+            return []
         def helper(node,level):
-            #start with current level
-            if len(levels)==level:
-                levels.append([])
-            
-            #append the current node value
-            levels[level].append(node.val)
-
-            #process child nodes for the next level
+            if len(result)==level:
+                result.append([])
+            result[level].append(node.val)
             if node.left:
                 helper(node.left,level+1)
             if node.right:
                 helper(node.right,level+1)
         helper(root,0)
-        return levels
+        return result
 ```
+
