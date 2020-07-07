@@ -1,18 +1,23 @@
+from collections import deque
 class Solution:
     def minMutation(self, start: str, end: str, bank: List[str]) -> int:
         bank=set(bank)
         if end not in bank:
             return -1
-        q=[(start,0)]
-        dict={"A":"CGT","C":"AGT","G":"ACT","T":"ACG"}
-        while q:
-            node,step=q.pop(0)
-            if node==end:
-                return step
-            for i,v in enumerate(node):
-                for j in dict[v]:
-                    new_node=node[:i]+j+node[i+1:]
-                    if new_node in bank:
-                        q.append((new_node,step+1))
-                        bank.remove(new_node)
-        return -1
+        queue=deque()
+        queue.append([start,0])
+        visited=set()
+        char='ACGT'
+        
+        while queue:
+            cur,cnt=queue.popleft()
+            if cur==end:
+                return cnt
+            for i in range(len(cur)):
+                for c in char:
+                    new=cur[:i]+c+cur[i+1:]
+                    if new in bank and new not in visited:
+                        visited.add(new)
+                        queue.append([new,cnt+1])
+       return -1
+        
